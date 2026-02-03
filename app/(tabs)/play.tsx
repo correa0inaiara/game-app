@@ -7,7 +7,11 @@ import { Player, PLAYERS } from '@/constants/players';
 import { useFocusEffect } from '@react-navigation/native';
 import { fonts } from '@/constants/fonts';
 
+export const MIN_POSITIONS = 1
+export const MAX_POSITIONS = 9
+
 const Play = () => {
+  const [computerPiece, setComputerPiece] = useState(PLAYERS.PLAYER_O)
   const [playerPiece, setPlayerPiece] = useState(PLAYERS.PLAYER_X)
   const [modalVisible, setModalVisible] = useState(false);
   const [boardState, setBoardState] = useState([
@@ -16,12 +20,104 @@ const Play = () => {
     '', '', ''
   ])
   const handleCellPress = (cellIndex: number) => {
-    setBoardState(prev => {
-      const next = [...prev]
-      if (next[cellIndex] === '') next[cellIndex] = playerPiece
-      return next
-    })
+    // verifica se célula vazia
+      // se vazia, marca a escolha do usuário e já define uma posição aleatória para o computador
+      // senão, não faz nada
+    if (verificaPosicao(cellIndex)) {
+      setBoardState(prev => {
+        const next = [...prev]
+        if (next[cellIndex] === '') next[cellIndex] = playerPiece
+        return next
+      })
+      verificaJogo()
+      let numero = escolhePosicaoComputador(cellIndex)
+      if (verificaPosicao(numero)) {
+        setBoardState(prev => {
+          const next = [...prev]
+          next[numero] = computerPiece
+          return next
+        })
+        verificaJogo()
+      } else {
+        while (!verificaPosicao(numero)) {
+          numero = escolhePosicaoComputador(cellIndex)
+          console.log('escolhido outro numero para pc: ', numero)
+          setBoardState(prev => {
+            const next = [...prev]
+            next[numero] = computerPiece
+            return next
+          })
+          verificaJogo()
+        }
+      }
+    }
+  }
 
+  const verificaJogo = () => {
+    const posicao1 = ''
+    const posicao2 = ''
+    const posicao3 = ''
+    const jogador1 = 0.5
+    const jogador2 = 0.3
+
+    const contagem = getSomaPosicoesJogadores()
+    console.log('contagem', contagem)
+    if (contagem.o < 3 && contagem.x < 3) {
+      return false
+    }
+    
+    // horizontais
+    const horizontais = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8]
+    ]
+    const verticais = [
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8]
+    ]
+    const diagonais = [
+      [0, 4, 8],
+      [2, 4, 6]
+    ]
+  }
+
+  const getSomaPosicoesJogadores = () => {
+    const contagem = boardState.reduce((acc, celula) => {
+      if (celula === 'X') acc.x++;
+      if (celula === 'O') acc.o++;
+      return acc;
+    }, { x: 0, o: 0 });
+    return contagem
+  }
+
+  const getRandomNumber = () => {
+    return Math.floor(Math.random() * (MAX_POSITIONS - MIN_POSITIONS + 1)) + MIN_POSITIONS
+  }
+
+  const escolhePosicaoComputador = (cellIndex: number) => {
+    let numero = getRandomNumber()
+    while (numero === cellIndex) {
+      numero = getRandomNumber()
+      console.log('gerado outro número: ', numero)
+    }
+    return numero
+  }
+
+  const verificaPosicao = (cellIndex: number): Boolean => {
+    let count = 0
+    boardState.forEach(position => {
+      if (position === '') count += 1
+    });
+
+    if (count > 1) {
+      if (boardState[cellIndex] === '') {
+        return true
+      }
+      return false
+    }
+    return true
   }
 
   useFocusEffect(
@@ -42,6 +138,8 @@ const Play = () => {
   const handleEscolherPlayer = (player: Player) => {
     setPlayerPiece(player)
     setModalVisible(false)
+    // Define a peça do adversário (computador)
+    setComputerPiece(player === PLAYERS.PLAYER_X ? PLAYERS.PLAYER_O : PLAYERS.PLAYER_X)
   }
   return (
     <SafeAreaView style={styles.safeArea}>
