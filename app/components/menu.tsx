@@ -3,6 +3,7 @@ import React from 'react'
 import { Colors } from '@/constants/theme'
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import { useRouter } from 'expo-router';
+import { fonts } from '@/constants/fonts';
 
 export type Menu = {
   id: number,
@@ -40,7 +41,8 @@ const Menu = () => {
             key={opcao.id} 
             style={{ 
               color: Colors[colorScheme ?? 'dark'].text,
-              fontSize: 25
+              fontSize: 35,
+              fontFamily: fonts.regular.fontFamily,
             }}
             onPress={() => router.push(opcao.route as Route)}
           >{opcao.nome}</Text>

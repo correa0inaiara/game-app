@@ -1,61 +1,63 @@
 import { Theme } from '@react-navigation/native';
 import { Platform } from 'react-native';
 
-const WEB_FONT_STACK =
-  'system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+const CUSTOM_FONT_REGULAR = 'Updock-Regular';
+
+// const WEB_FONT_STACK =
+//   'system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
 export const fonts = Platform.select({
   web: {
     regular: {
-      fontFamily: WEB_FONT_STACK,
+      fontFamily: CUSTOM_FONT_REGULAR,
       fontWeight: '400',
     },
     medium: {
-      fontFamily: WEB_FONT_STACK,
+      fontFamily: CUSTOM_FONT_REGULAR,
       fontWeight: '500',
     },
     bold: {
-      fontFamily: WEB_FONT_STACK,
+      fontFamily: CUSTOM_FONT_REGULAR,
       fontWeight: '600',
     },
     heavy: {
-      fontFamily: WEB_FONT_STACK,
+      fontFamily: CUSTOM_FONT_REGULAR,
       fontWeight: '700',
     },
   },
   ios: {
     regular: {
-      fontFamily: 'System',
+      fontFamily: CUSTOM_FONT_REGULAR,
       fontWeight: '400',
     },
     medium: {
-      fontFamily: 'System',
+      fontFamily: CUSTOM_FONT_REGULAR, 
       fontWeight: '500',
     },
     bold: {
-      fontFamily: 'System',
+      fontFamily: CUSTOM_FONT_REGULAR,   
       fontWeight: '600',
     },
     heavy: {
-      fontFamily: 'System',
+      fontFamily: CUSTOM_FONT_REGULAR,  
       fontWeight: '700',
     },
   },
   default: {
     regular: {
-      fontFamily: 'sans-serif',
+      fontFamily: CUSTOM_FONT_REGULAR,
       fontWeight: 'normal',
     },
     medium: {
-      fontFamily: 'sans-serif-medium',
+      fontFamily: CUSTOM_FONT_REGULAR, 
       fontWeight: 'normal',
     },
     bold: {
-      fontFamily: 'sans-serif',
+      fontFamily: CUSTOM_FONT_REGULAR,   
       fontWeight: '600',
     },
     heavy: {
-      fontFamily: 'sans-serif',
+      fontFamily: CUSTOM_FONT_REGULAR,  
       fontWeight: '700',
     },
   },

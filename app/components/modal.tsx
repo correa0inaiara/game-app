@@ -1,4 +1,5 @@
 // components/ModalCustom.tsx
+import { fonts } from '@/constants/fonts';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import React from 'react';
@@ -36,19 +37,19 @@ export default function ModalCustom({ visible, onClose, title, children, closeBu
 }
 
 const styles = StyleSheet.create({
-  // Overlay escuro semi-transparente atrás da modal
   modalOverlay: {
+    fontFamily: fonts.regular.fontFamily,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fundo escuro com 50% de opacidade
-    paddingHorizontal: 20, // Margem lateral em telas pequenas
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    paddingHorizontal: 20,
   },
   
-  // Container principal do conteúdo da modal
   modalContent: {
-    width: '100%', // Ocupa largura disponível (limitada pelo padding do overlay)
-    maxWidth: 400, // Limite máximo de largura
+    fontFamily: fonts.regular.fontFamily,
+    width: '100%',
+    maxWidth: 400,
     backgroundColor: Colors.light.primary,
     borderRadius: 16,
     padding: 24,
@@ -64,16 +65,14 @@ const styles = StyleSheet.create({
     elevation: 8,
   },
   
-  // Título da modal
   modalTitle: {
-    fontSize: 22,
-    fontWeight: '700',
+    fontFamily: fonts.regular.fontFamily,
     color: Colors.light.text,
+    fontSize: 30,
     marginBottom: 16,
     textAlign: 'center',
   },
   
-  // Botão de fechar
   closeButton: {
     marginTop: 24,
     backgroundColor: Colors.light.card,
@@ -91,9 +90,10 @@ const styles = StyleSheet.create({
   
   // Texto do botão de fechar
   closeButtonText: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: '600', // semi-bold
+    fontFamily: fonts.regular.fontFamily,
+    color: Colors.light.text,
+    fontSize: 20,
+    fontWeight: '600',
     letterSpacing: 0.5,
   },
 });

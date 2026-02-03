@@ -5,6 +5,7 @@ import ModalCustom from '../components/modal';
 import { Colors } from '@/constants/theme';
 import { Player, PLAYERS } from '@/constants/players';
 import { useFocusEffect } from '@react-navigation/native';
+import { fonts } from '@/constants/fonts';
 
 const Play = () => {
   const [playerPiece, setPlayerPiece] = useState(PLAYERS.PLAYER_X)
@@ -44,7 +45,7 @@ const Play = () => {
   }
   return (
     <SafeAreaView style={styles.safeArea}>
-        <ModalCustom
+      <ModalCustom
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
         title="Qual será sua peça"
@@ -54,12 +55,11 @@ const Play = () => {
           <TouchableOpacity onPress={() => handleEscolherPlayer(PLAYERS.PLAYER_X)}>
             <Text style={styles.playerX}>X</Text>
           </TouchableOpacity>
-          
+
           <TouchableOpacity onPress={() => handleEscolherPlayer(PLAYERS.PLAYER_O)}>
             <Text style={styles.playerO}>O</Text>
           </TouchableOpacity>
         </View>
-        {/* Pode colocar qualquer JSX */}
       </ModalCustom>
       <View style={styles.board}>
         {[0, 1, 2].map(row => (
@@ -86,7 +86,8 @@ const Play = () => {
 
 const styles = StyleSheet.create({
   safeArea: {
-    margin: 25
+    margin: 25,
+    fontFamily: fonts.regular.fontFamily,
   },
 
   modalContainer: {
@@ -97,11 +98,13 @@ const styles = StyleSheet.create({
   },
 
   playerX: {
+    fontFamily: fonts.regular.fontFamily,
     fontSize: 45,
     color: Colors.light.icon
   },
 
   playerO: {
+    fontFamily: fonts.regular.fontFamily,
     fontSize: 45,
     color: Colors.light.icon
   },
@@ -121,15 +124,16 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5, // Sombra no Android
   },
-  
+
   // Cada linha do tabuleiro (contém 3 células)
   row: {
     flex: 1, // Divide espaço igualmente entre 3 linhas
     flexDirection: 'row', // Células lado a lado
   },
-  
+
   // Cada célula/clique do jogo
   cell: {
+    fontFamily: 'Updock-Regular',
     flex: 1, // Divide espaço igualmente entre 3 células
     aspectRatio: 1, // Mantém quadrado
     justifyContent: 'center',
@@ -146,22 +150,20 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 3,
   },
-  
+
   // Texto dentro da célula (X ou O)
   cellText: {
     fontSize: 48,
-    fontWeight: 'bold',
-    // Você pode diferenciar X e O com cores
-    // color: value === 'X' ? '#FF6B6B' : '#4ECDC4'
+    fontFamily: 'Updock-Regular',
   },
-  
+
   // Estilo para célula vencedora (opcional)
   winningCell: {
     backgroundColor: '#E8F5E9', // Verde bem claro
     borderColor: '#4CAF50',
     borderWidth: 3,
   },
-  
+
   // Estilo para célula com hover/ativo (opcional)
   cellActive: {
     backgroundColor: '#f9f9f9',
