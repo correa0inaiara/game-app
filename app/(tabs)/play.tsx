@@ -71,7 +71,7 @@ const Play = () => {
                   key={col}
                   style={styles.cell}
                   onPress={() => handleCellPress(cellIndex)}>
-                  <Text>
+                  <Text style={styles.cellText}>
                     {boardState[cellIndex]}
                   </Text>
                 </TouchableOpacity>
@@ -115,14 +115,8 @@ const styles = StyleSheet.create({
     width: '90%', // Ocupa 90% da largura disponível
     maxWidth: 400, // Limite máximo para telas grandes
     alignSelf: 'center', // Centraliza horizontalmente
-    backgroundColor: '#f0f0f0', // Cor de fundo do tabuleiro
     borderRadius: 12,
     padding: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 5, // Sombra no Android
   },
 
   // Cada linha do tabuleiro (contém 3 células)
@@ -138,22 +132,16 @@ const styles = StyleSheet.create({
     aspectRatio: 1, // Mantém quadrado
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
     margin: 4, // Espaço entre células
     borderRadius: 8,
     borderWidth: 2,
-    borderColor: '#ddd',
-    // Efeito de pressão
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 3,
+    borderColor: Colors.light.text,
   },
 
   // Texto dentro da célula (X ou O)
   cellText: {
-    fontSize: 48,
+    fontSize: 40,
+    color: Colors.light.icon,
     fontFamily: 'Updock-Regular',
   },
 
