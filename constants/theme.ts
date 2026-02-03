@@ -9,22 +9,22 @@ import { fonts } from './fonts';
 
 export const Colors = {
   light: {
-    primary: '#60AB9A',
-    background: '#FFFFFF',
-    card: '#2A9D8F',
-    text: '#2A9D8F',
-    icon: '#457B9D',
-    border: '#457B9D',
+    primary: '#FFDEA9',
+    background: '#FFDEA9',
+    card: '#000000',
+    text: '#000000',
+    icon: '#6570D4',
+    border: '#FF7272',
     notification: '#457B9D',
   },
   dark: {
-    primary: '#62C370',
-    background: '#62C370',
-    card: '#9AD1D4',
-    text: '#20063B',
-    icon: '#20063B',
-    border: '#C2F9BB',
-    notification: '#CC3363',
+    primary: '#FFDEA9',
+    background: '#FFDEA9',
+    card: '#000000',
+    text: '#000000',
+    icon: '#6570D4',
+    border: '#FF7272',
+    notification: '#457B9D',
   },
 };
 

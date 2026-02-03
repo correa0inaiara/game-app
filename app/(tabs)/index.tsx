@@ -5,11 +5,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Menu from '@/app/components/menu'
 
 const index = () => {
-  const colorScheme = useColorScheme();
   return (
     <SafeAreaView style={styles.safeArea}>
       <Text style={{ 
-        color: Colors[colorScheme ?? 'dark'].text,
+        color: Colors.light.text,
         fontSize: 45,
         textAlign: 'center'
       }}>Jogo da Velha</Text>
